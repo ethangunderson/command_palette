@@ -17,7 +17,7 @@ defmodule CommandPaletteWeb.Router do
   scope "/", CommandPaletteWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", PageLive.Index, :index
   end
 
   # Other scopes may use custom stacks.

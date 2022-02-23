@@ -1,4 +1,5 @@
 <main class="container">
+  <.live_component module={CommandPalette.Components.CommandPalette} id="command_palette" />
   <p class="alert alert-info" role="alert"
     phx-click="lv:clear-flash"
     phx-value-key="info"><%= live_flash(@flash, :info) %></p>
