@@ -25,8 +25,11 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 import Alpine from "alpinejs";
+import focus from '@alpinejs/focus'
 
 window.Alpine = Alpine;
+Alpine.plugin(focus);
+
 Alpine.start();
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
