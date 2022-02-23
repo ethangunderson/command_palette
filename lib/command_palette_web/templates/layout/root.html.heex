@@ -10,6 +10,17 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
+    <div 
+      x-data="{ open: false }" 
+      x-show="open"
+      @keydown.meta.k.window.prevent="open = !open"
+      @keydown.escape.window="open = false"
+      class="fixed inset-0 top-0 z-10 pt-[25vh]"> 
+      <div class="fixed inset-0 bg-gray-500/75 opacity-90"></div>
+      <div @click.outside="open = false" class="overflow-y-auto relative rounded-xl shadow-2xl max-w-xl mx-auto p-4 bg-white opacity-100 ring-1 ring-black/5">
+        <input placeholder="Search..." class="text-2xl w-full focus:outline-none"/>
+      </div>
+    </div>  
     <header>
       <section class="container">
         <nav>
