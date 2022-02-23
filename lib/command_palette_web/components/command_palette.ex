@@ -27,7 +27,7 @@ defmodule CommandPalette.Components.CommandPalette do
                class="text-2xl w-full focus:outline-none"/>
           </div>
         <ul class="max-h-72 overflow-y-auto py-2 text-gray-800">
-    <template x-for={"(key, index) in #{@results}"} :key="index">
+          <template x-for={"(key, index) in #{@results}"} :key="index">
             <li x-text="key"
               :class="{ 'bg-gray-200': index === currentPosition }"
               class="select-none px-4 py-2 hover:bg-gray-200 hover:cursor-pointer">
@@ -36,16 +36,6 @@ defmodule CommandPalette.Components.CommandPalette do
         </ul>
       </div>
     </div> 
-    """
-  end
-
-  def result_list(assigns) do
-    ~H"""
-      <%= for result <- @results do %>
-        <li>
-          <%= IO.inspect(result) %>
-        </li>
-      <% end %>
     """
   end
 
@@ -68,7 +58,8 @@ defmodule CommandPalette.Components.CommandPalette do
     ]
 
     results =
-      Enum.filter(possible_results, fn result -> String.contains?(result, search_string) end)
+      possible_results
+      |> Enum.filter(fn result -> String.contains?(result, search_string) end)
       |> Jason.encode!()
 
     socket =
